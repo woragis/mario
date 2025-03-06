@@ -12,7 +12,7 @@ class Player(pygame.sprite.Sprite):
         self.vel_y = 0  # Vertical velocity
         self.jumping = False
 
-    def update(self, keys, platforms):
+    def update(self, keys, platforms, camera):
         # Movement
         speed = 5
         if keys[pygame.K_LEFT]:
@@ -28,14 +28,20 @@ class Player(pygame.sprite.Sprite):
 
         # Platform collision
         for platform in platforms:
-            if self.rect.colliderect(platform.rect) and self.vel_y > 0:
-                self.rect.bottom = platform.rect.top
+            platform_rect = pygame.Rect(
+                platform.rect.x - camera.offset_x,
+                platform.rect.y - camera.offset_y,
+                platform.rect.width,
+                platform.rect.height,
+            )
+            if self.rect.colliderect(platform_rect) and self.vel_y > 0:
+                self.rect.bottom = platform_rect.top
                 self.vel_y = 0
                 self.jumping = False
 
         # Jumping
         if keys[pygame.K_SPACE] and not self.jumping:
-            self.vel_y = -10
+            self.vel_y = -20
             self.jumping = True
 
         # Prevent falling through the floor
