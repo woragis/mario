@@ -4,7 +4,6 @@ from pygame.sprite import Group, Sprite
 
 from .camera import Camera
 from .constants import HEIGHT, PLAYER_SIZE, PLAYER_COLOR
-from .plataform import Platform
 
 
 class Player(Sprite):

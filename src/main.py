@@ -6,7 +6,6 @@ from pygame.event import get as get_event
 
 from src.camera import Camera
 from src.constants import WIDTH, HEIGHT, FPS, COLORS, TILE_SIZE, BACKGROUND_COLOR
-from src.plataform import platforms
 from src.player import player, player_group
 from src.map import load_map
 
@@ -26,13 +25,16 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        screen.fill(BACKGROUND_COLOR)
+        # screen.fill(BACKGROUND_COLOR)
 
         # Draw background tiles (cloud and other things)
         for row_index, row in enumerate(game_map):
             for col_index, char in enumerate(row):
                 if char in COLORS:
                     pygame.draw.rect(screen, COLORS[char],
+                                     (col_index * TILE_SIZE, row_index * TILE_SIZE, TILE_SIZE, TILE_SIZE))
+                else:
+                    pygame.draw.rect(screen, COLORS[''],
                                      (col_index * TILE_SIZE, row_index * TILE_SIZE, TILE_SIZE, TILE_SIZE))
 
         # keys = get_key_pressed()
