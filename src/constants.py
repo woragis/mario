@@ -1,0 +1,6 @@
+HEIGHT = 640
+WIDTH = 480
+
+FPS = 60
+
+TILE_SIZE = 16

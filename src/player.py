@@ -3,7 +3,7 @@ from constants import HEIGHT
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float):
         super().__init__()
         self.image = pygame.Surface((40, 60))  # Character size
         self.image.fill((255, 0, 0))  # Red color
