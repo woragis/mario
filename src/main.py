@@ -1,6 +1,8 @@
 from sys import exit
 
 import pygame
+from pygame.key import get_pressed as get_key_pressed
+from pygame.event import get as get_event
 
 from src.camera import Camera
 from src.constants import WIDTH, HEIGHT, FPS
@@ -18,11 +20,11 @@ def main():
     camera = Camera(WIDTH, HEIGHT)
 
     while running:
-        for event in pygame.event.get():
+        for event in get_event():
             if event.type == pygame.QUIT:
                 running = False
         screen.fill((135, 206, 235))
-        keys = pygame.key.get_pressed()
+        keys = get_key_pressed()
         player.update(keys, platforms, camera)
 
         camera.update(player)

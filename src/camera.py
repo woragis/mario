@@ -1,5 +1,5 @@
 class Camera:
-    def __init__(self, width, height):
+    def __init__(self, width: int, height: int):
         self.offset_x = 0
         self.offset_y = 0
         self.width = width
